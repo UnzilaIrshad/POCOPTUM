@@ -1,9 +1,9 @@
 name: Azure ARM Template Deploy
 
- on:
-  workflow_dispatch:
+on:
+ workflow_dispatch:
  
- jobs:
+jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
       steps:
@@ -22,7 +22,7 @@ name: Azure ARM Template Deploy
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: DynamicsDeployments-eastus
-          template: ./FunctionAppTemplates/template3b.json
+          template: ./FunctionTemplates/template.json
           
 
         # output containerName variable from template

@@ -7,7 +7,7 @@
             "type": "String"
         },
         "serverfarms_ASP_rgdevORxMSDynamicsRCM_9368_externalid": {
-            "defaultValue": "/subscriptions/b4f24c37-de92-4f78-809d-d521ce05ea7f/resourceGroups/rg-dev-ORxMSDynamicsRCM/providers/Microsoft.Web/serverfarms/ASP-rgdevORxMSDynamicsRCM-9368",
+            "defaultValue": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/Microsoft.Web/serverfarms/ASP-rgdevORxMSDynamicsRCM-9368",
             "type": "String"
         }
     },

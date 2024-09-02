@@ -29,4 +29,4 @@ jobs:
           --resource-group ${{ env.RESOURCE_GROUP }} \
           --template-file FunctionTemplates/templateFunction.json \
           --parameters sites_FunctionAppDeploymentPOCTest_name=${{ env.FUNCTION_APP_NAME }} \
-                      serverfarms_FunctionAppDeploymentPOCTest_externalid=${{ secrets.APP_SERVICE_PLAN_ID }}
+                       serverfarms_FunctionAppDeploymentPOCTest_externalid=${{ secrets.APP_SERVICE_PLAN_ID }}

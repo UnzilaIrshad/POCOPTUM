@@ -1,29 +1,32 @@
-name: Azure ARM Template Deploy
+name: Deploy Azure Function with ARM Template
 
 on:
- workflow_dispatch:
- 
+  workflow_dispatch:
+
+env:
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  RESOURCE_GROUP: DynamicsDeployments-eastus
+  LOCATION: Central US
+  FUNCTION_APP_NAME: FunctionAppDeploymentPOCTest-Function
+
 jobs:
-    build-and-deploy:
-      runs-on: ubuntu-latest
-      steps:
+  deploy:
+    runs-on: ubuntu-latest
 
-        # Checkout code
-      - uses: actions/checkout@main
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-        # Log into Azure
-      - uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Set up Azure CLI
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy ARM template
-      - name: Run ARM deploy
-        uses: azure/arm-deploy@v1
-        with:
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: DynamicsDeployments-eastus
-          template: ./FunctionTemplates/template.json
-          
-
-        # output containerName variable from template
-      - run: echo ${{ steps.deploy.outputs.containerName }}
+    - name: Deploy ARM Template
+      run: |
+        az deployment group create \
+          --subscription ${{ env.AZURE_SUBSCRIPTION_ID }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --template-file FunctionTemplates/template.json \
+          --parameters sites_dev_fa_optum_createpackagezipfile_name=${{ env.FUNCTION_APP_NAME }} \
+                      serverfarms_ASP_rgdevORxMSDynamicsRCM_9368_externalid=${{ secrets.APP_SERVICE_PLAN_ID }}

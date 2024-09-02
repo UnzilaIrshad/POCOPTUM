@@ -4,10 +4,10 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTIONID }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
   RESOURCE_GROUP: DynamicsDeployments-eastus
   LOCATION: Central US
-  FUNCTION_APP_NAME: FunctionAppDeployment-Unzila
+  FUNCTION_APP_NAME: FunctionApp-Final
 
 jobs:
   deploy:
@@ -27,6 +27,13 @@ jobs:
         az deployment group create \
           --subscription ${{ env.AZURE_SUBSCRIPTION_ID }} \
           --resource-group ${{ env.RESOURCE_GROUP }} \
-          --template-file FunctionTemplates/templateFunction.json \
-          --parameters sites_FunctionAppDeploymentPOCTest_name=${{ env.FUNCTION_APP_NAME }} \
-                       serverfarms_FunctionAppDeploymentPOCTest_externalid=${{ secrets.APP_SERVICE_PLAN_ID }}
+          --template-file FunctionApps/dev-fa-optum-createpackagezipfile/template.json \
+          --parameters sites_dev_fa_optum_createpackagezipfile_name=${{ env.FUNCTION_APP_NAME }} \
+                      serverfarms_ASP_rgdevORxMSDynamicsRCM_9368_externalid=${{ secrets.APP_SERVICE_PLAN_ID }} \
+          
+    - name: Deploy Function Code
+      run: |
+        az functionapp deployment source config-zip \
+          --name ${{ env.FUNCTION_APP_NAME }} \
+          --resource-group ${{ env.RESOURCE_GROUP }} \
+          --src "./FunctionApps/Azure functions/wwwroot.zip"

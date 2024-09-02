@@ -3,11 +3,11 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_FunctionAppDeploymentPOCTest_name": {
-            "defaultValue": "FunctionAppDeploymentPOCTest",
+            "defaultValue": "",
             "type": "String"
         },
         "serverfarms_FunctionAppDeploymentPOCTest_externalid": {
-            "defaultValue": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/Microsoft.Web/serverfarms/FunctionAppDeploymentPOCTest",
+            "defaultValue": "",
             "type": "String"
         }
     },

@@ -1,0 +1,263 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_FunctionAppDeploymentPOCTest_name": {
+            "defaultValue": "FunctionAppDeploymentPOCTest",
+            "type": "String"
+        },
+        "serverfarms_FunctionAppDeploymentPOCTest_externalid": {
+            "defaultValue": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/Microsoft.Web/serverfarms/FunctionAppDeploymentPOCTest",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2023-12-01",
+            "name": "[parameters('sites_FunctionAppDeploymentPOCTest_name')]",
+            "location": "East US",
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/microsoft.insights/components/FunctionAppDeploymentPOCTest",
+                "hidden-link: /app-insights-instrumentation-key": "7104a182-e064-48f2-a8df-9a2646f0aa28",
+                "hidden-link: /app-insights-conn-string": "InstrumentationKey=7104a182-e064-48f2-a8df-9a2646f0aa28;IngestionEndpoint=https://eastus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=577ec54c-4c4b-4ed7-b844-bb47bd243e12"
+            },
+            "kind": "functionapp",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "functionappdeploymentpoctest.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "functionappdeploymentpoctest.scm.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_FunctionAppDeploymentPOCTest_externalid')]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "dnsConfiguration": {},
+                "vnetRouteAllEnabled": false,
+                "vnetImagePullEnabled": false,
+                "vnetContentShareEnabled": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": false,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 200,
+                    "minimumElasticInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": false,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "vnetBackupRestoreEnabled": false,
+                "customDomainVerificationId": "F2B63D800D0E93BB2B3A4314BA947A22300311C0EFDECAD4F14C70431AA0BBF4",
+                "containerSize": 1536,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_FunctionAppDeploymentPOCTest_name'), '/ftp')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_FunctionAppDeploymentPOCTest_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/microsoft.insights/components/FunctionAppDeploymentPOCTest",
+                "hidden-link: /app-insights-instrumentation-key": "7104a182-e064-48f2-a8df-9a2646f0aa28",
+                "hidden-link: /app-insights-conn-string": "InstrumentationKey=7104a182-e064-48f2-a8df-9a2646f0aa28;IngestionEndpoint=https://eastus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=577ec54c-4c4b-4ed7-b844-bb47bd243e12"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_FunctionAppDeploymentPOCTest_name'), '/scm')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_FunctionAppDeploymentPOCTest_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/microsoft.insights/components/FunctionAppDeploymentPOCTest",
+                "hidden-link: /app-insights-instrumentation-key": "7104a182-e064-48f2-a8df-9a2646f0aa28",
+                "hidden-link: /app-insights-conn-string": "InstrumentationKey=7104a182-e064-48f2-a8df-9a2646f0aa28;IngestionEndpoint=https://eastus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=577ec54c-4c4b-4ed7-b844-bb47bd243e12"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_FunctionAppDeploymentPOCTest_name'), '/web')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_FunctionAppDeploymentPOCTest_name'))]"
+            ],
+            "tags": {
+                "hidden-link: /app-insights-resource-id": "/subscriptions/5726837a-3f90-474d-97a1-1b210a1e5fc4/resourceGroups/DynamicsDeployments-eastus/providers/microsoft.insights/components/FunctionAppDeploymentPOCTest",
+                "hidden-link: /app-insights-instrumentation-key": "7104a182-e064-48f2-a8df-9a2646f0aa28",
+                "hidden-link: /app-insights-conn-string": "InstrumentationKey=7104a182-e064-48f2-a8df-9a2646f0aa28;IngestionEndpoint=https://eastus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/;ApplicationId=577ec54c-4c4b-4ed7-b844-bb47bd243e12"
+            },
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$FunctionAppDeploymentPOCTest",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "localMySqlEnabled": false,
+                "managedServiceIdentityId": 22971,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.2",
+                "ftpsState": "FtpsOnly",
+                "preWarmedInstanceCount": 0,
+                "functionAppScaleLimit": 200,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 0,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_FunctionAppDeploymentPOCTest_name'), '/1daea6d9ed8945f58d671e06b896cc31')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_FunctionAppDeploymentPOCTest_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "ms-azuretools-vscode",
+                "deployer": "ms-azuretools-vscode",
+                "message": "Created via a push deployment",
+                "start_time": "2024-08-29T17:26:28.0430976Z",
+                "end_time": "2024-08-29T17:26:30.2154104Z",
+                "active": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/functions",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_FunctionAppDeploymentPOCTest_name'), '/POC_FA')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_FunctionAppDeploymentPOCTest_name'))]"
+            ],
+            "properties": {
+                "script_root_path_href": "https://functionappdeploymentpoctest.azurewebsites.net/admin/vfs/site/wwwroot/POC_FA/",
+                "script_href": "https://functionappdeploymentpoctest.azurewebsites.net/admin/vfs/site/wwwroot/bin/POC_Deploy.dll",
+                "config_href": "https://functionappdeploymentpoctest.azurewebsites.net/admin/vfs/site/wwwroot/POC_FA/function.json",
+                "test_data_href": "https://functionappdeploymentpoctest.azurewebsites.net/admin/vfs/data/Functions/sampledata/POC_FA.dat",
+                "href": "https://functionappdeploymentpoctest.azurewebsites.net/admin/functions/POC_FA",
+                "config": {
+                    "generatedBy": "Microsoft.NET.Sdk.Functions.Generator-4.4.1",
+                    "configurationSource": "attributes",
+                    "bindings": [
+                        {
+                            "type": "httpTrigger",
+                            "methods": [
+                                "get",
+                                "post"
+                            ],
+                            "authLevel": "anonymous",
+                            "name": "req"
+                        }
+                    ],
+                    "disabled": false,
+                    "scriptFile": "../bin/POC_Deploy.dll",
+                    "entryPoint": "Company.Function.POC_FA.Run"
+                },
+                "invoke_url_template": "https://functionappdeploymentpoctest.azurewebsites.net/api/poc_fa",
+                "language": "DotNetAssembly",
+                "isDisabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2023-12-01",
+            "name": "[concat(parameters('sites_FunctionAppDeploymentPOCTest_name'), '/', parameters('sites_FunctionAppDeploymentPOCTest_name'), '.azurewebsites.net')]",
+            "location": "East US",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_FunctionAppDeploymentPOCTest_name'))]"
+            ],
+            "properties": {
+                "siteName": "FunctionAppDeploymentPOCTest",
+                "hostNameType": "Verified"
+            }
+        }
+    ]
+}

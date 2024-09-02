@@ -3,10 +3,10 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_dev_fa_optum_createpackagezipfile_name": {
-            "value": null
+            "value": "dev-fa-optum-createpackagezipfile"
         },
         "serverfarms_ASP_rgdevORxMSDynamicsRCM_9368_externalid": {
-            "value": null
+            "value": "/subscriptions/b4f24c37-de92-4f78-809d-d521ce05ea7f/resourceGroups/rg-dev-ORxMSDynamicsRCM/providers/Microsoft.Web/serverfarms/ASP-rgdevORxMSDynamicsRCM-9368",
         }
     }
 }

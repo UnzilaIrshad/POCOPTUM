@@ -7,7 +7,7 @@ env:
   AZURE_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTIONID }}
   RESOURCE_GROUP: DynamicsDeployments-eastus
   LOCATION: Central US
-  FUNCTION_APP_NAME: FunctionApp-FunctionDeployment
+  FUNCTION_APP_NAME: FunctionApp-Deployment
 
 jobs:
   deploy:

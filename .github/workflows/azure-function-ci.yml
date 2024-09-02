@@ -7,7 +7,7 @@ env:
   AZURE_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTIONID }}
   RESOURCE_GROUP: DynamicsDeployments-eastus
   LOCATION: Central US
-  FUNCTION_APP_NAME: FunctionAppDeploymentPOCTest-Function
+  FUNCTION_APP_NAME: FunctionAppDeployment-Unzila
 
 jobs:
   deploy:
@@ -27,6 +27,6 @@ jobs:
         az deployment group create \
           --subscription ${{ env.AZURE_SUBSCRIPTION_ID }} \
           --resource-group ${{ env.RESOURCE_GROUP }} \
-          --template-file FunctionTemplates/template.json \
-          --parameters sites_dev_fa_optum_createpackagezipfile_name=${{ env.FUNCTION_APP_NAME }} \
-                      serverfarms_ASP_rgdevORxMSDynamicsRCM_9368_externalid=${{ secrets.APP_SERVICE_PLAN_ID }}
+          --template-file FunctionTemplates/templateFunction.json \
+          --parameters sites_FunctionAppDeploymentPOCTest_name=${{ env.FUNCTION_APP_NAME }} \
+                      serverfarms_FunctionAppDeploymentPOCTest_externalid=${{ secrets.APP_SERVICE_PLAN_ID }}

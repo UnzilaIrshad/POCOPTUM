@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_dev_fa_optum_createpackagezipfile_name": {
-            "defaultValue": "dev-fa-optum-createpackagezipfile",
+            "defaultValue": "",
             "type": "String"
         },
         "serverfarms_ASP_rgdevORxMSDynamicsRCM_9368_externalid": {

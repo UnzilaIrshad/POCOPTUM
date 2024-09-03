@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
   deploy:
-    runs-on: { group: ubuntu-uhg }
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout the repository
       uses: actions/checkout@v2

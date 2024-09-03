@@ -1,4 +1,21 @@
 {
+    "type": "Microsoft.Web/connections",
+    "apiVersion": "2017-07-01",
+    "name": "[variables('keyVaultConnectionName')]",
+    "location": "centralus",
+    "kind": "V1",
+    "properties": {
+        "api": {
+            "id": "[concat('/subscriptions/',parameters('subscriptionId'),'/providers/Microsoft.Web/locations/centralus/managedApis/keyvault')]"
+        },
+        "parameterValueType": "Alternative",
+        "alternativeParameterValues": {
+                    "vaultName": "dev-kv-d365keyvault"
+                },
+        "displayName": "keyvault"
+    }
+},
+{
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {

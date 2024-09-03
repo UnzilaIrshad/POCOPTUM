@@ -17,4 +17,4 @@ jobs:
         subscriptionId: ${{ secrets.SUBSCRIPTIONID }}
         resourceGroupName: ${{ secrets.RESOURCEGROUP }}
         template: 'LogicApps/wellsky/template.json'
-        parameters: 'LogicApps/wellsky/parameters-dev.json'
+        parameters: 'LogicApps/wellsky/parameters.json'

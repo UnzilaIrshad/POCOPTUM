@@ -1,18 +1,36 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "workflows_dev_la_optum_outbound_wellsky_name": {
-            "value": null
-        },
-        "connections_dynamicsax_externalid": {
-            "value": null
-        },
-        "connections_keyvault_externalid": {
-            "value": null
-        },
-        "connections_servicebus_externalid": {
-            "value": null
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logicAppName": {
+      "value": "dev-la-optum-outbound-wellsky"
+    },
+    "dynamicsAXConnection": {
+      "value": "/subscriptions/b4f24c37-de92-4f78-809d-d521ce05ea7f/resourceGroups/rg-dev-ORxMSDynamicsRCM/providers/Microsoft.Web/connections/dynamicsax"
+    },
+    "keyVaultConnection": {
+      "value": "/subscriptions/b4f24c37-de92-4f78-809d-d521ce05ea7f/resourceGroups/rg-dev-ORxMSDynamicsRCM/providers/Microsoft.Web/connections/keyvault"
+    },
+    "serviceBusConnection": {
+      "value": "/subscriptions/b4f24c37-de92-4f78-809d-d521ce05ea7f/resourceGroups/rg-dev-ORxMSDynamicsRCM/providers/Microsoft.Web/connections/servicebus"
+    },
+    "dynamicsaxConnectionName": {
+      "value": "dynamicsax"
+    },
+    "keyVaultConnectionName": {
+      "value": "keyvault"
+    },
+    "serviceBusConnectionName": {
+      "value": "servicebus"
+    },
+    "D365FOURL": {
+      "value": "optum-perf.sandbox.operations.dynamics.com"
+    },
+    "subscriptionId": {
+      "value": "b4f24c37-de92-4f78-809d-d521ce05ea7f"
+    },
+    "resourceGroupName": {
+      "value": "rg-dev-ORxMSDynamicsRCM"
     }
+  }
 }

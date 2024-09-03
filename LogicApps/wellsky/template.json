@@ -600,7 +600,7 @@
                 "host": {
                   "triggerName": "manual",
                   "workflow": {
-                    "id": "[concat(resourceId('Microsoft.Logic/workflows', parameters('logicAppName')), '-token-haseeb')]"
+                    "id": "[concat(resourceId('Microsoft.Logic/workflows', parameters('logicAppName')), '-token')]"
                   }
                 }
               }
